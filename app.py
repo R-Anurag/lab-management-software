@@ -11,17 +11,25 @@ from email.message import EmailMessage
 # app = Flask(__name__)
 app = Flask('Lab Manangement System')
 
+# Get the database URL from the environment variable (if applicable)
+DATABASE_URL = os.getenv("DATABASE_URL", "mysql://tgfvmycch3ud6npk:ms9givan0npjldga@x40p5pp7n9rowyv6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/udmcqa9h0lxu08ai")
+
+# Parse the database URL manually or use a library
+from urllib.parse import urlparse
+
+# Parse the database URL
+result = urlparse(DATABASE_URL)
 
 # Configuring database
-db = yaml.load(open('db.yaml'))
-app.config["MYSQL_HOST"] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
-app.config['SECRET_KEY'] = db['my_secret_key']
+app.config["MYSQL_HOST"] = result.hostname
+app.config['MYSQL_USER'] = result.username
+app.config['MYSQL_PASSWORD'] = result.password
+app.config['MYSQL_DB'] = result.path[1:]
+app.config['SECRET_KEY'] = 'my secret key'
 
 
 mysql = MySQL(app)
+
 
 
 @app.route("/dashboard")
