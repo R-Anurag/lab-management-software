@@ -29,7 +29,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:anuragrai123@localhost/test_database'
 else:
     app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://atl_app_db_user:s0nBopqcY8DJORJwoT2d6t0DPA2a4kuh@dpg-ceukmn6n6mpglqdc8j70-a/atl_app_db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://u27ppekhp4k77p:p1d3b829a59d4678e1c6f9e4e814688526bbe85195d96922754f8fa76fa97ccd9@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/dfcdjkqfl5ls6e'
 
 
 # Creating database object
